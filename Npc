@@ -22,6 +22,9 @@ while task.wait() do
             weld.Part0 = torso
             weld.Part1 = newPart
             weld.Parent = newPart
+
+            weld.C0 = CFrame.new(0, 0, 0)
+            weld.C1 = CFrame.new(0, 0, 0)
         end
     end
 end

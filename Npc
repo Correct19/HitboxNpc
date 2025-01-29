@@ -1,0 +1,27 @@
+while task.wait() do
+    local npcs = workspace.NPCFolders.EnemyFolder:GetChildren()
+    
+    for _, npc in ipairs(npcs) do
+        local torso = npc:FindFirstChild("HumanoidRootPart")
+        if not torso then continue end
+
+        local newPart = torso:FindFirstChild("TorsoHitbox")
+        
+        if not newPart then
+            newPart = Instance.new("Part")
+            newPart.Name = "TorsoHitbox"
+            newPart.Size = Vector3.new(34, 34, 34)
+            newPart.Massless = true
+            newPart.CanCollide = false
+            newPart.Anchored = false
+            newPart.Transparency = 0.5
+            newPart.Color = BrickColor.new("Really red").Color
+            newPart.Parent = torso
+
+            local weld = Instance.new("WeldConstraint")
+            weld.Part0 = torso
+            weld.Part1 = newPart
+            weld.Parent = newPart
+        end
+    end
+end
